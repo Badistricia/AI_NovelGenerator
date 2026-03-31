@@ -37,6 +37,13 @@
             "model_name": "text-embedding-ada-002",
             "retrieval_k": 4,
             "interface_format": "OpenAI"
+        },
+        "Aliyun Bailian": {
+            "api_key": "sk-00ec79c73d32409e83e9fee3b58d58bb",
+            "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+            "model_name": "text-embedding-v4",
+            "retrieval_k": 4,
+            "interface_format": "Aliyun Bailian"
         }
     },
     "other_params": {

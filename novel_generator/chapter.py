@@ -582,7 +582,14 @@ def generate_chapter_draft(
         timeout=timeout
     )
 
-    chapter_content = invoke_with_cleaning(llm_adapter, prompt_text)
+    from novel_generator.agents.orchestrator import ChapterOrchestrator
+    import re
+    orchestrator = ChapterOrchestrator(llm_adapter, user_guidance)
+    
+    chapter_title_match = re.search(r"《(.*?)》", prompt_text)
+    c_title = chapter_title_match.group(1) if chapter_title_match else f"第{novel_number}章"
+    
+    chapter_content = orchestrator.generate(prompt_text, c_title)
     if not chapter_content.strip():
         logging.warning("Generated chapter draft is empty.")
     chapter_file = os.path.join(chapters_dir, f"chapter_{novel_number}.txt")

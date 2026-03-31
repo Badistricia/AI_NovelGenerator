@@ -507,6 +507,9 @@ def build_embeddings_config_tab(self):
             elif new_value == "SiliconFlow":
                 self.embedding_url_var.set("https://api.siliconflow.cn/v1/embeddings")
                 self.embedding_model_name_var.set("BAAI/bge-m3")
+            elif new_value == "Aliyun Bailian":
+                self.embedding_url_var.set("https://dashscope.aliyuncs.com/compatible-mode/v1")
+                self.embedding_model_name_var.set("text-embedding-v4")
 
     for i in range(5):
         self.embeddings_config_tab.grid_rowconfigure(i, weight=0)
@@ -522,7 +525,7 @@ def build_embeddings_config_tab(self):
     # 2) Embedding 接口格式
     create_label_with_help(self, parent=self.embeddings_config_tab, label_text="Embedding 接口格式:", tooltip_key="embedding_intexrface_format", row=1, column=0, font=("Microsoft YaHei", 12))
 
-    emb_interface_options = ["DeepSeek", "OpenAI", "Azure OpenAI", "Gemini", "Ollama", "ML Studio","SiliconFlow"]
+    emb_interface_options = ["DeepSeek", "OpenAI", "Azure OpenAI", "Gemini", "Ollama", "ML Studio","SiliconFlow", "Aliyun Bailian"]
 
     emb_interface_dropdown = ctk.CTkOptionMenu(self.embeddings_config_tab, values=emb_interface_options, variable=self.embedding_interface_format_var, command=on_embedding_interface_changed, font=("Microsoft YaHei", 12))
     emb_interface_dropdown.grid(row=1, column=1, padx=5, pady=5, sticky="nsew")
